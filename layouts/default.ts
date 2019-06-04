@@ -1,22 +1,13 @@
 import {Component, Vue} from "~/node_modules/nuxt-property-decorator";
+import RegisterForm from "~/components/register-form";
 
 @Component({
-	data() {
-		return {
-			clipped:     false,
-			drawer:      true,
-			fixed:       false,
-			items:       [
-				{icon: 'apps', title: 'Welcome', to: '/'},
-				{icon: 'bubble_chart', title: 'Inspire', to: '/inspire'}
-			],
-			miniVariant: false,
-			right:       true,
-			rightDrawer: false,
-			title:       'Vuetify.js'
-		};
-	}
+	components: {
+		RegisterForm,
+	},
 })
 export default class extends Vue {
 
+	/** Состояние модала окна регистрации. */
+	protected registerModalState: boolean = false;
 }

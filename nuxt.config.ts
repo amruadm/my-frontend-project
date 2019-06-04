@@ -1,8 +1,18 @@
 const nodeExternals       = require('webpack-node-externals')
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
+const hasDevMode = (process.env.NODE_ENV !== 'production');
+
+let apiBaseUrl = 'http://54.202.75.76:3003/api/';
+if (hasDevMode) {
+	apiBaseUrl = 'http://127.0.0.1:8080/api/';
+}
+
 export default {
-	env:     {},
+	env:     {
+		apiBaseUrl: apiBaseUrl,
+		dev: hasDevMode,
+	},
 	head:    {
 		title: "my-frontend-project",
 		meta:  [
