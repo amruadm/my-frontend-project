@@ -48,9 +48,9 @@ export const actions: ActionTree<UserState, State> = {
         formData.append('username', username);
 
         // @ts-ignore todo $axios добавить в тайпинги.
-        let [err, exists] = await to(this.$axios.$post(process.env.apiBaseUrl + 'v1/auth/check-username/', formData));
-        if (err || !exists) return false;
+        let [err, exists] = await to(this.$axios.$post(process.env.apiBaseUrl + 'v1/auth/check-username', formData));
+        if (err) return false;
 
-        return true;
+        return exists;
     }
 };

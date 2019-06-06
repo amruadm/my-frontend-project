@@ -41,7 +41,7 @@ export default class RegisterForm extends Vue {
      * Валидаторы.
      */
     protected get rules(): object {
-        return {
+        const result: any = {
             username: [
                 (value: string) => /[A-z]/.test(value) || 'Имя пользователя может содержать только латинские символы',
                 (value: string) => value.length >= RegisterData.CharactersMin || 'Имя пользователя не может быть длиннее ' + RegisterData.CharactersMin + ' символов',
@@ -57,6 +57,11 @@ export default class RegisterForm extends Vue {
                 (value: string) => (/.+@.+\..+/.test(value) || 'Некорректный E-mail'),
             ],
         };
+
+        result.confirm = Object.assign([], result.password);
+        result.confirm.push((value: string) => value === this.formData.password || 'Пароли не совпадают');
+
+        return result;
     }
 
     /**

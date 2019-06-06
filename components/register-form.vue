@@ -23,7 +23,7 @@
                     ></v-text-field>
                     <v-text-field
                             v-model="formData.confitmPassword"
-                            :rules="rules.password"
+                            :rules="rules.confirm"
                             label="Подтвердите пароль"
                             type="password"
                     ></v-text-field>
