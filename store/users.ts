@@ -30,7 +30,7 @@ export const actions: ActionTree<UserState, State> = {
      * @param data    Пользовательские данные.
      */
     async [types.register](context, data: RegisterData): Promise<boolean | number> {
-        // @ts-ignore todo $axios добавить в тайпинги.
+        // this.$axios.setHeader('Content-Type', 'application/x-www-form-urlencoded', ['POST']);
         let [err, newUserId] = await this.$axios.$post(process.env.apiBaseUrl + 'v1/auth/register/', ObjectHelper.objectToFormData(data));
         if (err) return false;
 

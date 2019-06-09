@@ -48,7 +48,11 @@ export default {
 	],
 	plugins: [
 		{src: '~plugins/vuetify.ts', ssr: true},
+		{src: '~plugins/axios.ts', ssr: true},
 	],
 	router:  [],
-	axios:   {}
+	axios:   {
+		proxyHeaders: false,
+		credentials: false,
+	}
 }

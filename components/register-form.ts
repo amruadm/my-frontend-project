@@ -34,7 +34,7 @@ export default class RegisterForm extends Vue {
      */
     @Watch('formData.username')
     protected async onUsernameChanged() {
-        this.hasUsernameExists = await this.$store.dispatch([UsersStore.name, UsersStore.types.checkUsername].join('/'), this.formData.username);
+        // this.hasUsernameExists = await this.$store.dispatch([UsersStore.name, UsersStore.types.checkUsername].join('/'), this.formData.username);
     }
 
     /**
