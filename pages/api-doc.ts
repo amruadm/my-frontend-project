@@ -16,7 +16,7 @@ export default class extends Vue {
      */
     public mounted() {
         this.swaggerUi = SwaggerUIBundle({
-            url: 'http://localhost:8080/api/doc.json',
+            url: process.env.apiBaseUrl + 'doc.json',
             dom_id: '#' + this.rootElementId,
         });
     }
