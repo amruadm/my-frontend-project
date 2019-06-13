@@ -1,5 +1,3 @@
-import TerserPlugin from 'terser-webpack-plugin';
-
 const nodeExternals       = require('webpack-node-externals')
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
@@ -48,13 +46,7 @@ export default {
 			}
 		},
 		optimization: {
-			minimize: true,
-			minimizer: [
-				new TerserPlugin({
-					cache: true,
-					parallel: false
-				})
-			]
+			minimize: false, // todo Разобраться с проблемой зависания на 91%
 		}
 	},
 	modules: [
