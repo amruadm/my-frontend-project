@@ -5,7 +5,7 @@
 			<v-spacer />
 			<v-btn @click="onMainPageClick">Главная</v-btn>
 			<v-btn @click="onApiDocClick">API</v-btn>
-			<v-btn @click="registerModalState = !registerModalState">Регистрация</v-btn>
+			<v-btn v-if="false === hasUser" @click="registerModalState = !registerModalState">Регистрация</v-btn>
 		</v-toolbar>
 		<v-content class="py-0">
 			<nuxt />

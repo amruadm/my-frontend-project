@@ -18,4 +18,11 @@ export default class extends Vue {
 	protected onMainPageClick() {
 		this.$router.push('/');
 	}
+
+	/**
+	 * Наличие данных зарегистрированного пользователя.
+	 */
+	protected get hasUser(): boolean {
+		return (undefined !== this.$store.state.users.registered);
+	}
 }

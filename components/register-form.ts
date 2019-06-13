@@ -1,6 +1,7 @@
 import {Component, Vue, Watch} from "~/node_modules/nuxt-property-decorator";
 import RegisterData from "~/models/RegisterData";
 import * as UsersStore from '~/store/users';
+import UserInfo from "~/models/UserInfo";
 
 /**
  * Состояние формы регистрации.
@@ -73,8 +74,8 @@ export default class RegisterForm extends Vue {
     protected async send() {
         this.formState = RegisterFormState.Wait;
 
-        const userId: boolean | number = await this.$store.dispatch([UsersStore.name, UsersStore.types.register].join('/'), this.formData);
+        const userInfo: boolean | UserInfo = await this.$store.dispatch([UsersStore.name, UsersStore.types.register].join('/'), this.formData);
 
-        this.formState = (false === userId ? RegisterFormState.Write : RegisterFormState.Success);
+        this.formState = (false === userInfo ? RegisterFormState.Write : RegisterFormState.Success);
     }
 }
