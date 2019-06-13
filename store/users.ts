@@ -30,8 +30,7 @@ export const actions: ActionTree<UserState, State> = {
      * @param data    Пользовательские данные.
      */
     async [types.register](context, data: RegisterData): Promise<boolean | number> {
-        // this.$axios.setHeader('Content-Type', 'application/x-www-form-urlencoded', ['POST']);
-        let [err, newUserId] = await this.$axios.$post(process.env.apiBaseUrl + 'v1/auth/register/', ObjectHelper.objectToFormData(data));
+        let [err, newUserId] = await this.$axios.$post(process.env.apiBaseUrl + 'v1/user/register/', ObjectHelper.objectToFormData(data));
         if (err) return false;
 
         return newUserId;
@@ -44,11 +43,8 @@ export const actions: ActionTree<UserState, State> = {
      * @param username Имя пользователя.
      */
     async [types.checkUsername](context, username: string): Promise<boolean> {
-        const formData = new FormData();
-        formData.append('username', username);
-
         // @ts-ignore todo $axios добавить в тайпинги.
-        let [err, exists] = await to(this.$axios.$post(process.env.apiBaseUrl + 'v1/auth/check-username', formData));
+        let [err, exists] = await to(this.$axios.$post(process.env.apiBaseUrl + 'v1/user/check-username/' + username));
         if (err) return false;
 
         return exists;

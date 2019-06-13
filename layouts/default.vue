@@ -3,17 +3,17 @@
 		<v-toolbar fixed app>
 			<v-toolbar-title v-text="'MMO Game'"></v-toolbar-title>
 			<v-spacer />
+			<v-btn @click="onMainPageClick">Главная</v-btn>
+			<v-btn @click="onApiDocClick">API</v-btn>
 			<v-btn @click="registerModalState = !registerModalState">Регистрация</v-btn>
 		</v-toolbar>
-		<v-content>
-			<v-container>
-				<nuxt />
-				<no-ssr>
-					<v-dialog v-model="registerModalState" width="500">
-						<register-form />
-					</v-dialog>
-				</no-ssr>
-			</v-container>
+		<v-content class="py-0">
+			<nuxt />
+			<no-ssr>
+				<v-dialog v-model="registerModalState" width="500">
+					<register-form />
+				</v-dialog>
+			</no-ssr>
 		</v-content>
 		<v-footer app>
 			<v-spacer /><span>&copy; {{ new Date().getFullYear() }}</span><v-spacer />

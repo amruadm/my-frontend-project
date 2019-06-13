@@ -9,13 +9,10 @@ export default class RegisterData {
     public static readonly CharactersMin: number = 6;
 
     /** @field Имя пользователя. */
-    public username: string = '';
+    public login: string = '';
 
     /** @field Пароль. */
     public password: string = '';
-
-    /** @field Подтверждение пароля. */
-    public confitmPassword: string = '';
 
     /** @field E-mail. */
     public email: string = '';

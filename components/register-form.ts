@@ -20,6 +20,9 @@ export default class RegisterForm extends Vue {
     /** @field Данные формы. */
     protected formData: RegisterData = new RegisterData();
 
+    /** @field Подтверждение пароля. */
+    protected confirmPassword: string = '';
+
     /** @field Флаг проверки на существование имени пользователя. */
     protected hasUsernameExists: boolean = false;
 
@@ -32,9 +35,9 @@ export default class RegisterForm extends Vue {
     /**
      * Слушатель поля имени пользователя.
      */
-    @Watch('formData.username')
+    @Watch('formData.login')
     protected async onUsernameChanged() {
-        // this.hasUsernameExists = await this.$store.dispatch([UsersStore.name, UsersStore.types.checkUsername].join('/'), this.formData.username);
+        this.hasUsernameExists = await this.$store.dispatch([UsersStore.name, UsersStore.types.checkUsername].join('/'), this.formData.login);
     }
 
     /**
@@ -42,7 +45,7 @@ export default class RegisterForm extends Vue {
      */
     protected get rules(): object {
         const result: any = {
-            username: [
+            login: [
                 (value: string) => /[A-z]/.test(value) || 'Имя пользователя может содержать только латинские символы',
                 (value: string) => value.length >= RegisterData.CharactersMin || 'Имя пользователя не может быть длиннее ' + RegisterData.CharactersMin + ' символов',
                 (value: string) => value.length <= RegisterData.CharactersMax || 'Имя пользователя не может быть короче ' + RegisterData.CharactersMin + ' символов',
@@ -59,7 +62,7 @@ export default class RegisterForm extends Vue {
         };
 
         result.confirm = Object.assign([], result.password);
-        result.confirm.push((value: string) => value === this.formData.password || 'Пароли не совпадают');
+        result.confirm.push((value: string) => value === this.confirmPassword || 'Пароли не совпадают');
 
         return result;
     }

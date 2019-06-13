@@ -10,4 +10,12 @@ export default class extends Vue {
 
 	/** Состояние модала окна регистрации. */
 	protected registerModalState: boolean = false;
+
+	protected onApiDocClick() {
+		this.$router.push('/api-doc');
+	}
+
+	protected onMainPageClick() {
+		this.$router.push('/');
+	}
 }

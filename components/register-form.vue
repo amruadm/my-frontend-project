@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <v-container class="register-form">
         <v-layout>
             <v-flex xs12>
                 <div v-if="RegisterFormState.Wait === formState" class="text-xs-center">
@@ -11,8 +11,8 @@
                 </div>
                 <template v-else-if="RegisterFormState.Write === formState">
                     <v-text-field
-                            v-model="formData.username"
-                            :rules="rules.username"
+                            v-model="formData.login"
+                            :rules="rules.login"
                             label="Имя пользователя"
                     ></v-text-field>
                     <v-text-field
@@ -22,7 +22,7 @@
                             type="password"
                     ></v-text-field>
                     <v-text-field
-                            v-model="formData.confitmPassword"
+                            v-model="confirmPassword"
                             :rules="rules.confirm"
                             label="Подтвердите пароль"
                             type="password"
@@ -35,7 +35,7 @@
                     <v-btn large color="primary" @click="send">Зарегистрироваться</v-btn>
                 </template>
                 <div v-else-if="RegisterFormState.Success === formState" class="text-xs-center">
-                    <span>Да здравствует {{formData.username}}! Наш новый герой!</span>
+                    <span>Да здравствует {{formData.login}}! Наш новый герой!</span>
                 </div>
             </v-flex>
         </v-layout>
@@ -43,3 +43,9 @@
 </template>
 
 <script lang="ts" src="./register-form.ts"></script>
+
+<style lang="stylus">
+    .register-form {
+        background: #47494e;
+    }
+</style>

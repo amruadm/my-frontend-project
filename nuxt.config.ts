@@ -26,7 +26,10 @@ export default {
 		]
 	},
 	loading: {color: "#3B8070"},
-	css:     ["~/assets/styles/main.styl"],
+	css:     [
+		"~/assets/styles/main.styl",
+		"~/node_modules/swagger-ui-dist/swagger-ui.css",
+	],
 	build:   {
 		transpile:  [/^vuetify/],
 		plugins:    [
