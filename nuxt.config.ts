@@ -3,7 +3,8 @@ const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
 const hasDevMode = (process.env.NODE_ENV !== 'production');
 
-let apiBaseUrl = 'http://ec2-34-219-155-103.us-west-2.compute.amazonaws.com:3003/api/';
+// todo Вынести либо в конфиг, либо в переменные окружения.
+let apiBaseUrl = 'http://ec2-54-201-165-15.us-west-2.compute.amazonaws.com:3003/api/';
 if (hasDevMode) {
 	apiBaseUrl = 'http://127.0.0.1:8080/api/';
 }
