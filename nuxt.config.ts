@@ -4,14 +4,13 @@ const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 const hasDevMode = (process.env.NODE_ENV !== 'production');
 
 // todo Вынести либо в конфиг, либо в переменные окружения.
-let apiBaseUrl = 'http://ec2-54-201-165-15.us-west-2.compute.amazonaws.com:3003/api/';
+let apiBaseUrl = 'http://ec2-54-201-165-15.us-west-2.compute.amazonaws.com:3003/';
 if (hasDevMode) {
-	apiBaseUrl = 'http://127.0.0.1:8080/api/';
+	apiBaseUrl = 'http://127.0.0.1:8080/';
 }
 
 export default {
 	env:     {
-		apiBaseUrl: apiBaseUrl,
 		dev: hasDevMode,
 	},
 	head:    {
@@ -52,14 +51,19 @@ export default {
 	},
 	modules: [
 		"@nuxtjs/axios",
+		'@nuxtjs/proxy',
 	],
 	plugins: [
 		{src: '~plugins/vuetify.ts', ssr: true},
 		{src: '~plugins/axios.ts', ssr: true},
+		{src: '~plugins/auth.ts', ssr: true},
 	],
-	router:  [],
+	router: {},
 	axios:   {
 		proxyHeaders: false,
 		credentials: false,
-	}
+	},
+	proxy: {
+		'/api/': apiBaseUrl,
+	},
 }

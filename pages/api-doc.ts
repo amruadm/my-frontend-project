@@ -16,8 +16,13 @@ export default class extends Vue {
      */
     public mounted() {
         this.swaggerUi = SwaggerUIBundle({
-            url: process.env.apiBaseUrl + 'doc.json',
+            url: '/api/doc.json',
             dom_id: '#' + this.rootElementId,
+            requestInterceptor: (req: any) => {
+                req.headers['Authorization'] = 'Bearer ' + this.$store.state.users.token;
+
+                return req;
+            },
         });
     }
 }

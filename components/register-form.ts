@@ -77,5 +77,9 @@ export default class RegisterForm extends Vue {
         const userInfo: boolean | UserInfo = await this.$store.dispatch([UsersStore.name, UsersStore.types.register].join('/'), this.formData);
 
         this.formState = (false === userInfo ? RegisterFormState.Write : RegisterFormState.Success);
+
+        if (RegisterFormState.Success === this.formState) {
+            this.$emit('onSuccess');
+        }
     }
 }
