@@ -1,7 +1,7 @@
 <template>
 	<v-container class="index-page">
 		<v-btn v-if="false === showGameCanvas" large color="primary index-page__play" @click="showGameCanvas = !showGameCanvas">Играть</v-btn>
-		<iframe v-if="showGameCanvas" src="/game/MMORPG.html" width="100%" height="100%"></iframe>
+		<iframe v-if="showGameCanvas" src="/game/index.html" width="100%" height="100%"></iframe>
 	</v-container>
 </template>
 
